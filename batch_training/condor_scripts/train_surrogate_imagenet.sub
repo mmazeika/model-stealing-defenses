@@ -1,0 +1,16 @@
+####################
+#
+# Example Helloworld
+# Simple HTCondor submit description file
+#
+####################
+
+Executable   = train_surrogate_imagenet.sh
+Log          = ./condor_outputs/surrogate_outputs/train_surrogate_imagenet_80epochs.log
+Output       = ./condor_outputs/surrogate_outputs/train_surrogate_imagenet_80epochs.stdout
+Error        = ./condor_outputs/surrogate_outputs/train_surrogate_imagenet_80epochs.stderr
+request_gpus = 4
+request_cpus = 20
+requirements = Machine=="vision-21.cs.illinois.edu"
+environment = DATASET=$(DATASET);SAVE_PATH=$(SAVE_PATH);EARLY_STOPPING_EPOCH=$(EARLY_STOPPING_EPOCH)
+Queue

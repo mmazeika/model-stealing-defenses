@@ -1,0 +1,16 @@
+####################
+#
+# Example Helloworld
+# Simple HTCondor submit description file
+#
+####################
+
+Executable   = get_queries.sh
+Log          = ./condor_outputs/query_outputs/get_queries_$(EXP_NAME).log
+Output       = ./condor_outputs/query_outputs/get_queries_$(EXP_NAME).stdout
+Error        = ./condor_outputs/query_outputs/get_queries_$(EXP_NAME).stderr
+request_gpus = 1
+request_cpus = 4
+requirements = (CUDADeviceName == "NVIDIA A40" || CUDADeviceName == "NVIDIA TITAN X (Pascal)" || CUDADeviceName == "NVIDIA TITAN Xp" || CUDADeviceName == "NVIDIA Quadro RTX 6000" || CUDADeviceName == "NVIDIA GeForce GTX TITAN X")
+environment = TRANSFER_DATA=$(TRANSFER_DATA);EVAL_DATA=$(EVAL_DATA);DEFENSE=$(DEFENSE);EPSILONS=$(EPSILONS);SAVE_PATH=$(SAVE_PATH)
+Queue

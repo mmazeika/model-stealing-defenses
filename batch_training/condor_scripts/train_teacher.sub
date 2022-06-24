@@ -1,0 +1,16 @@
+####################
+#
+# Example Helloworld
+# Simple HTCondor submit description file
+#
+####################
+
+Executable   = train_teacher.sh
+Log          = ./condor_outputs/teacher_outputs/train_teacher_$(EXP_NAME).log
+Output       = ./condor_outputs/teacher_outputs/train_teacher_$(EXP_NAME).stdout
+Error        = ./condor_outputs/teacher_outputs/train_teacher_$(EXP_NAME).stderr
+request_gpus = 1
+request_cpus = 4
+requirements = (CUDADeviceName == "NVIDIA TITAN X (Pascal)" || CUDADeviceName == "NVIDIA TITAN Xp" || CUDADeviceName == "NVIDIA Quadro RTX 6000" || CUDADeviceName == "NVIDIA GeForce GTX TITAN X")
+environment = DATASET=$(DATASET);SAVE_PATH=$(SAVE_PATH);MISINFORMATION=$(MISINFORMATION)
+Queue

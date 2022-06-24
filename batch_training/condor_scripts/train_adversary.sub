@@ -1,0 +1,16 @@
+####################
+#
+# Example Helloworld
+# Simple HTCondor submit description file
+#
+####################
+
+Executable   = train_adversary.sh
+Log          = ./condor_outputs/adversary_outputs/train_adversary_$(EXP_NAME).log
+Output       = ./condor_outputs/adversary_outputs/train_adversary_$(EXP_NAME).stdout
+Error        = ./condor_outputs/adversary_outputs/train_adversary_$(EXP_NAME).stderr
+request_gpus = 1
+request_cpus = 4
+requirements = (CUDADeviceName == "NVIDIA TITAN X (Pascal)" || CUDADeviceName == "NVIDIA TITAN Xp" || CUDADeviceName == "NVIDIA Quadro RTX 6000" || CUDADeviceName == "NVIDIA GeForce GTX TITAN X" || CUDADeviceName == "NVIDIA A40")
+environment = TRANSFER_DATA=$(TRANSFER_DATA);EVAL_DATA=$(EVAL_DATA);LOAD_PATH=$(LOAD_PATH);EPSILON=$(EPSILON);SAVE_PATH=$(SAVE_PATH);ORACLE=$(ORACLE)
+Queue
