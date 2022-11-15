@@ -1,5 +1,5 @@
 # Model Stealing Defenses with Gradient Redirection
-This is the official repository for "[How to Steer Your Adversary: Targeted and Efficient Model Stealing Defenses with Gradient Redirection](https://example.com)" (ICML 2022)
+This is the official repository for "[How to Steer Your Adversary: Targeted and Efficient Model Stealing Defenses with Gradient Redirection](https://arxiv.org/abs/2206.14157)" (ICML 2022)
 
 ## How To Use
 First, clone the repository, then clone the [Outlier Exposure repository](https://github.com/hendrycks/outlier-exposure) into the model-stealing-defenses folder. This is used to provide a strong anomaly detector for the Adaptive Misinformation baseline on CIFAR experiments. Next, follow the instructions in batch\_training/condor\_scripts/data/README.md to setup the distribution-aware datasets. Optionally download and untar the outputs and condor\_outputs folders from [here](https://drive.google.com/drive/folders/1uzv_i2v8RedPYh6r06dWYBKFJ94zdxc-?usp=share_link), replacing the empty folders by the same name with the respective untarred folders. These contain perturbed posteriors and trained models, which can be used to replicate results from the paper, but this requires around 60GB of space.
